@@ -1,0 +1,15 @@
+{
+  "name": "zhihu-columns-api",
+  "version": "1.0.0",
+  "description": "知乎专栏后端接口",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
