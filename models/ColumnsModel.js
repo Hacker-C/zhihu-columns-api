@@ -13,11 +13,16 @@ const queryColumns = async () => {
   return results
 }
 
-const addColumns = async columns => {
-  const sql = 'insert into columns(title, avatar, description) values (?, ?)'
-  let results = new Promise((resolve, reject) => {
-    db.query(sql, Object.values(columns))
+const insertColumn = async columns => {
+  const sql = 'insert into columns(title, description, author_id) values (?, ?, ?)'
+  const data = [columns.title, columns.description, columns.author_id]
+  let affectedRows = await new Promise((resolve, reject) => {
+    db.query(sql, data, (err, results) => {
+      if (err) reject(err)
+      resolve(results.affectedRows)
+    })
   })
+  return affectedRows
 }
 
-module.exports = { queryColumns }
+module.exports = { queryColumns, insertColumn }
