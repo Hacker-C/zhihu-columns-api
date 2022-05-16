@@ -23,4 +23,15 @@ const insertColumn = async columns => {
   return affectedRows
 }
 
-module.exports = { queryColumns, insertColumn }
+const getColumn = async columnId => {
+  const sql = 'SELECT * FROM columns WHERE id=?'
+  let column = await new Promise((resolve, reject) => {
+    db.query(sql, columnId, (err, results) => {
+      if (err) reject(err)
+      resolve(results)
+    })
+  })
+  return column
+}
+
+module.exports = { queryColumns, insertColumn, getColumn }
