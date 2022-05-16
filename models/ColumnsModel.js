@@ -1,13 +1,11 @@
 const db = require('../db')
 
 const queryColumns = async () => {
-  let results = new Promise((resolve, reject) => {
-    db.query('select "hello db"', (err, res) => {
-      if (err) {
-        reject('出错了！')
-      } else {
-        resolve(res)
-      }
+  const sql = 'SELECT * FROM columns'
+  let results = await new Promise((resolve, reject) => {
+    db.query(sql, (err, results) => {
+      if (err) reject(err)
+      resolve(results)
     })
   })
   return results

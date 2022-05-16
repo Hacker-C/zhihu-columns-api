@@ -2,11 +2,11 @@
 const express = require('express')
 const router = express.Router()
 
-const { getColumns, addColumn } = require('../services/ColumnsService')
+const { getAllColumns, addColumn } = require('../services/ColumnsService')
 
 // 获取所有专栏信息
 router.get('/columns', async (req, res) => {
-  let results = await getColumns()
+  let results = await getAllColumns()
   res.send(results)
 })
 
