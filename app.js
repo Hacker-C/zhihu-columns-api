@@ -10,6 +10,7 @@ app.use(express.json()) // 解析 req body 表单数据
 app.use(cors(CorsConfig))
 app.use(logger('dev')) // 监听接口测试情况
 app.use(BASE_CONFIG.API, routes.columnsRoutes)
+app.use(BASE_CONFIG.API, routes.PostRoutes)
 
 app.listen(BASE_CONFIG.PORT, () => {
   console.log(`serving at http://localhost:${BASE_CONFIG.PORT}`)
