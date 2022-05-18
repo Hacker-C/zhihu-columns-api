@@ -1,5 +1,14 @@
-const { queryPostsByColumnId } = require('../models/PostModel')
+const { queryPostsByColumnId, queryAllPost } = require('../models/PostModel')
 const ResponseData = require('../common/ResponseData')
+
+const getAllPosts = async () => {
+  try {
+    const results = await queryAllPost()
+    return new ResponseData(0, results, '查询文章成功')
+  } catch (e) {
+    return new ResponseData(1, e, '查询失败，服务器错误')
+  }
+}
 
 const getPostsByColumnId = async columnId => {
   try {
@@ -13,4 +22,4 @@ const getPostsByColumnId = async columnId => {
   }
 }
 
-module.exports = { getPostsByColumnId }
+module.exports = { getPostsByColumnId, getAllPosts }

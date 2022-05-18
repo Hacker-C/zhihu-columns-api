@@ -1,8 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const { getPostsByColumnId } = require('../services/PostService')
+const { getPostsByColumnId, getAllPosts } = require('../services/PostService')
 const ResultHandler = require('../middlewares/ResultHandler')
+
+router.get('/posts', async (req, res, next) => {
+  const results = await getAllPosts()
+  ResultHandler(results, req, res, next)
+})
 
 router.get('/columns/:id/posts', async (req, res, next) => {
   const columnId = req.params.id
